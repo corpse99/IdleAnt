@@ -18,7 +18,7 @@ export class GameService {
   last: number;
   selectedGen: string;
   list: any;
-  interval = 1000 / 10;
+  interval = 1 / 1;
   saveFreq = 1000 * 3 * 60;
   kongFreq = 1000 * 10 * 60;
 
@@ -74,15 +74,15 @@ export class GameService {
     const delta = now - this.last;
 
     if (delta > this.interval) {
-      if (delta > 1000) this.game.isChanged = true;
+      if (delta > 1) this.game.isChanged = true;
 
       this.game.longUpdate(delta);
 
       this.game.prestige.time.quantity = Decimal.min(
         this.game.prestige.time.quantity.plus(
-          this.game.prestige.timeMaker.quantity.times(0.1).times(delta / 1000)
+          this.game.prestige.timeMaker.quantity.times(6).times(delta / 1)
         ),
-        this.game.prestige.timeBank.quantity.plus(4).times(3600)
+        this.game.prestige.timeBank.quantity.plus(7000).times(3600)
       );
 
       this.last = now;

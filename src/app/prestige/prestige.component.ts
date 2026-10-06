@@ -41,7 +41,7 @@ export class PrestigeComponent implements OnInit {
       return true
 
     if (!this.gameService.game.research.prestigeResearch.owned())
-      return false
+      return true
 
     let currentPrice: Cost
 
